@@ -1,0 +1,50 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+*.whl
+
+# ---- 运行产物（本技能的输出目录，不入库）----
+out/
+outputs/
+preview/
+*.plan.json
+*.cad.report.json
+*.report.json
+*.glb
+*.stl
+*.stp
+*.step
+*.sat
+*.dgn
+!assets/**/*.glb
+
+# ---- 日志 / 缓存 ----
+*.log
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Office / WPS 临时文件 ----
+~$*.docx
+~$*.pptx
+~$*.xlsx
+.~lock.*#
+
+# ---- 本地配置（可能含路径/凭据）----
+.env
+.env.*
+*.local

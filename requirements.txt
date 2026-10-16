@@ -1,0 +1,28 @@
+# cad-drawing-to-3d 依赖清单
+# 安装：pip install -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
+# （清华镜像实测 trimesh 会抽风，用阿里云镜像）
+#
+# ── 必需：全管线（DWG/DXF/PDF 提取 + 网格重建）──
+ezdxf>=1.3,<2                 # DXF 图元提取、样图生成
+pymupdf>=1.24,<2              # PDF 矢量解析（import fitz）
+opencv-python>=4.8,<5         # 位图 PDF 的轮廓检测
+numpy>=1.26,<3                # 数值基础
+shapely>=2.0,<3               # 轮廓几何（buffer(0) 清自交、孔洞归属）
+trimesh>=4.0,<5               # 网格重建（extrude_polygon / revolve）+ 水密校验
+manifold3d>=2.3,<4            # trimesh 布尔差集后端（孔的挖除，mesh.difference）
+scipy>=1.11,<2                # trimesh 部分三角化/变换运算依赖（实测环境必需）
+
+# ── 可选：位图 PDF 的 OCR 降级（矢量图不需要）──
+rapidocr_onnxruntime>=1.3,<2  # 文字识别兜底，缺失时 pdf_extract 自动跳过
+
+# ── 可选：STEP 独立复核（scripts/verify_step_occ.py，强烈建议）──
+# 用 OpenCASCADE 内核第三方复核导出的 STEP 是否真被接受；
+# 缺失时脚本以退出码 2 明确退出，不影响主流程。
+gmsh>=4.11,<5
+
+# 说明：
+# 1) 机械实体（STEP/STP）由自研 B-rep 写出器生成，纯 Python，**无额外依赖**，
+#    也不要求本机安装任何 CAD 软件。
+# 2) DWG 输入需要外部 DWG→DXF 引擎（LibreDWG 或 ODA File Converter，均免费），
+#    两者都缺时 scripts/dwg2dxf.py 以退出码 2 退出并给出下载指引。
+# 3) 旧版 export_cad.py 的 §七 CAD 自动化存档分支已停用，如需复活才需 pywin32。

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三维零件查看器</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #1a1d23;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif; color: #d8dce3; }
+  #stage { width: 100%; height: 100%; display: block; }
+  #hud { position: absolute; top: 12px; left: 12px; background: rgba(20,23,28,.88);
+    border: 1px solid #333a45; border-radius: 8px; padding: 10px 14px; font-size: 12px;
+    line-height: 1.8; min-width: 210px; pointer-events: none; }
+  #hud b { color: #7fb2e5; }
+  #tree { position: absolute; top: 12px; right: 12px; background: rgba(20,23,28,.88);
+    border: 1px solid #333a45; border-radius: 8px; padding: 10px 14px; font-size: 12px;
+    max-height: 60%; overflow: auto; min-width: 180px; }
+  #tree .item { padding: 2px 6px; border-radius: 4px; cursor: pointer; white-space: nowrap; }
+  #tree .item:hover { background: #2a3140; }
+  #tree .item.sel { background: #2f5d8a; color: #fff; }
+  #msg { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+    background: rgba(20,23,28,.9); border: 1px solid #333a45; border-radius: 6px;
+    padding: 6px 16px; font-size: 12px; display: none; }
+  #drop { position: absolute; inset: 0; border: 2px dashed #7fb2e5; border-radius: 8px;
+    background: rgba(40,60,90,.25); display: none; align-items: center; justify-content: center;
+    font-size: 18px; pointer-events: none; }
+  .kbd { background:#2a3140; border-radius:3px; padding:0 5px; font-size:11px; }
+</style>
+</head>
+<body>
+<canvas id="stage"></canvas>
+<div id="hud">
+  <div>模型：<b id="h-name">-</b></div>
+  <div>网格：<b id="h-mesh">0</b> 个</div>
+  <div>三角面：<b id="h-tri">0</b></div>
+  <div>包围盒：<b id="h-bbox">-</b></div>
+  <div>水密：<b id="h-wt">-</b></div>
+</div>
+<div id="tree"><div style="color:#8a93a3;margin-bottom:4px;">网格列表（点击选中）</div></div>
+<div id="msg"></div>
+<div id="drop">松开鼠标加载模型（.glb / .stl）</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/controls/OrbitControls.js"></script>
+<script src="vendor/loaders/GLTFLoader.js"></script>
+<script src="vendor/loaders/STLLoader.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
