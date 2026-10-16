@@ -13,7 +13,10 @@
     pip install -i https://mirrors.aliyun.com/pypi/simple/ gmsh
 用法：
     python verify_step_occ.py 零件图.stp [零件数]
+    python verify_step_occ.py -h            # 打印本说明
 退出码：0 = 通过（实体数吻合且每件体积为正）；2 = 未装 gmsh；1 = 不通过
+
+零件数可省略：同目录下若有 `<stem>.cad.report.json`，会自动取其 summary.n_parts。
 """
 import os
 import sys
@@ -23,6 +26,10 @@ def main():
     if len(sys.argv) < 2:
         sys.stderr.write(__doc__)
         return 1
+    if sys.argv[1] in ("-h", "--help", "-?", "/?"):
+        # 帮助走 stdout、退出码 0，符合常规 CLI 习惯
+        sys.stdout.write(__doc__)
+        return 0
     path = os.path.abspath(sys.argv[1])
     if not os.path.isfile(path):
         sys.stderr.write("文件不存在: %s\n" % path)

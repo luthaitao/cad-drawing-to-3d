@@ -72,6 +72,8 @@ python scripts/rebuild3d.py out/flange.plan.json -o out/flange.glb
 cad-drawing-to-3d/
 ├── SKILL.md                 技能说明书：完整管线、验收标准、踩坑表（最有价值的是这张表）
 ├── requirements.txt         依赖清单（必需 / 可选分组，带版本上限）
+├── LICENSE.md               MIT 许可（标准正文）
+├── NOTICE.md                适用范围 / 第三方组件 / 外部工具 / 使用须知
 ├── scripts/
 │   ├── make_plan.py         一站式 CLI：任意输入 → plan.json
 │   ├── dwg2dxf.py           DWG→DXF 引擎自动探测（LibreDWG / ODA）
@@ -161,6 +163,7 @@ gmsh                   # STEP 独立复核（自带 OpenCASCADE）
 ## 📄 License
 
 [MIT](LICENSE.md)。`assets/viewer-template/vendor/` 下的 three.js 系组件遵循其原始 MIT 许可，版权归原作者所有。
+适用范围、第三方组件明细、外部工具（LibreDWG / ODA / gmsh）与使用须知见 [NOTICE.md](NOTICE.md)。
 
 ## 👤 作者
 

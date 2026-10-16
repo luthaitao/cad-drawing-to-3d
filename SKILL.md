@@ -276,5 +276,6 @@ references/
 assets/viewer-template/   three.js r128 UMD 离线查看器（双击 index.html，支持拖放 GLB/STL）
 assets/icon.png           技能图标 512×512（等轴测实体 + 顶面网格 + 尺寸标注）
 requirements.txt          依赖清单（必需/可选分组 + 版本上限）
-LICENSE.md                MIT（含第三方组件说明）
+LICENSE.md                MIT 许可（标准正文，便于平台自动识别）
+NOTICE.md                 适用范围 / 第三方组件（three.js 系）/ 外部工具 / 使用须知
 ```
